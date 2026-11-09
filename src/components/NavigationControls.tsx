@@ -77,10 +77,10 @@ export const NavigationControls: React.FC<NavigationControlsProps> = ({
                 <span className="text-[11px] font-mono pr-1 text-blue-200">Playing</span>
               </>
             ) : (
-              <>
-                <VolumeX className="w-3.5 h-3.5" />
-                <span className="text-[11px] font-mono pr-1 text-navy-400">Muted</span>
-              </>
+              <div className="flex items-center gap-1.5 animate-pulse">
+                <VolumeX className="w-3.5 h-3.5 text-blue-400" />
+                <span className="text-[11px] font-mono pr-1 text-blue-300 font-medium">Nyalakan Musik 🎵</span>
+              </div>
             )}
           </button>
         </div>

@@ -11,6 +11,7 @@ import { MirrorPhotoSlide } from './components/MirrorPhotoSlide';
 import { MoonPolaroidSlide } from './components/MoonPolaroidSlide';
 import { NavigationControls } from './components/NavigationControls';
 import { HeartQRGenerator } from './components/HeartQRGenerator';
+import { MusicPromptDialog } from './components/MusicPromptDialog';
 
 export const App: React.FC = () => {
   // Always remove old stale localStorage to ensure fresh Ali Mansur config
@@ -36,6 +37,7 @@ export const App: React.FC = () => {
   });
 
   const [isPlaying, setIsPlaying] = useState(false);
+  const [showMusicPrompt, setShowMusicPrompt] = useState(true);
   const [isQROpen, setIsQROpen] = useState(false);
   const [shareableUrl, setShareableUrl] = useState('');
 
@@ -66,27 +68,39 @@ export const App: React.FC = () => {
     } else {
       audioRef.current
         .play()
-        .then(() => setIsPlaying(true))
+        .then(() => {
+          setIsPlaying(true);
+          setShowMusicPrompt(false);
+        })
         .catch((err) => {
           console.warn('Audio play error, falling back:', err);
           if (audioRef.current) {
             audioRef.current.src = '/sempurna.mp3';
-            audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+            audioRef.current.play().then(() => {
+              setIsPlaying(true);
+              setShowMusicPrompt(false);
+            }).catch(() => {});
           }
         });
     }
   };
 
   const handleStartMusic = () => {
-    if (audioRef.current && audioRef.current.paused) {
+    if (audioRef.current) {
       audioRef.current
         .play()
-        .then(() => setIsPlaying(true))
+        .then(() => {
+          setIsPlaying(true);
+          setShowMusicPrompt(false);
+        })
         .catch((err) => {
           console.warn('Playback error:', err);
           if (audioRef.current) {
             audioRef.current.src = '/sempurna.mp3';
-            audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+            audioRef.current.play().then(() => {
+              setIsPlaying(true);
+              setShowMusicPrompt(false);
+            }).catch(() => {});
           }
         });
     }
@@ -171,6 +185,18 @@ export const App: React.FC = () => {
           onScrollToTop={handleScrollToTop}
         />
       </main>
+
+      {/* Music Notice / Prompt Dialog */}
+      <MusicPromptDialog
+        isOpen={showMusicPrompt && !isPlaying}
+        musicTitle={config.musicTitle}
+        musicArtist={config.musicArtist}
+        onPlay={() => {
+          handleStartMusic();
+          setShowMusicPrompt(false);
+        }}
+        onClose={() => setShowMusicPrompt(false)}
+      />
 
       {/* Heart QR Code Modal */}
       {isQROpen && (
