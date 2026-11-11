@@ -45,22 +45,22 @@ export const MirrorPhotoSlide: React.FC<MirrorPhotoSlideProps> = ({ config }) =>
           <div className="w-0.5 h-6 bg-gradient-to-b from-amber-400 to-amber-600 -mt-1" />
         </div>
 
-        {/* Vintage Mirror Frame */}
-        <div className="relative w-64 h-80 sm:w-72 sm:h-90 rounded-[42px] sm:rounded-[48px] p-2.5 bg-gradient-to-b from-amber-200 via-amber-500 to-amber-700 shadow-2xl shadow-amber-500/25 border-2 border-amber-300 flex items-center justify-center group overflow-hidden">
+        {/* Vintage Oval Mirror Frame */}
+        <div className="relative w-56 h-72 sm:w-64 sm:h-80 rounded-[46%] p-2.5 bg-gradient-to-b from-amber-200 via-amber-500 to-amber-700 shadow-2xl shadow-amber-500/25 border-2 border-amber-300 flex items-center justify-center group">
           {/* Inner Frame */}
-          <div className="w-full h-full rounded-[36px] sm:rounded-[42px] p-1.5 bg-navy-950 border border-amber-400/60 overflow-hidden relative shadow-inner">
+          <div className="w-full h-full rounded-[46%] p-1.5 bg-navy-950 border border-amber-400/60 overflow-hidden relative shadow-inner">
             {/* The Photo */}
             <img
               src={config.mirrorPhoto}
-              alt="You and Me"
-              className="w-full h-full object-cover object-center rounded-[32px] sm:rounded-[38px] transition-transform duration-700 group-hover:scale-105"
+              alt={config.recipientName}
+              className="w-full h-full object-cover object-center rounded-[46%] transition-transform duration-700 group-hover:scale-105"
             />
             {/* Glass Sheen Glare */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none rounded-[32px] sm:rounded-[38px]" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none rounded-[46%]" />
           </div>
 
-          {/* Sparkle Badge (placed on bottom-left over dark shirt so it doesn't cover either face) */}
-          <div className="absolute bottom-3.5 left-4.5 bg-navy-950/90 p-1.5 rounded-full border border-amber-400/70 shadow-md">
+          {/* Sparkle Badge */}
+          <div className="absolute bottom-3 right-6 bg-navy-950/95 p-1.5 rounded-full border border-amber-400/80 shadow-md z-10">
             <Sparkles className="w-3.5 h-3.5 text-amber-300" />
           </div>
         </div>

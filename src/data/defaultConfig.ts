@@ -23,7 +23,7 @@ export const DEFAULT_CONFIG: BirthdayConfig = {
 
   // Real photos of Ali Mansur
   scrapbookPhoto: '/photos/photo2.jpeg',
-  mirrorPhoto: '/photos/photo_mirror_romantic.jpeg',
+  mirrorPhoto: '/photos/photo_mirror_oval.jpeg',
   polaroidPhotos: [
     '/photos/photo1.jpeg',
     '/photos/photo2.jpeg',
